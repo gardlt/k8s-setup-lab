@@ -1,0 +1,19 @@
+heat_template_version: 2014-10-16
+
+description: |
+  A linux server with security group attached to public port.
+
+resources:
+    security_group:
+        type: OS::Neutron::SecurityGroup
+        properties:
+        name: the_sg
+        description: Ping and SSH
+        rules:
+        - protocol: icmp
+        - protocol: tcp
+          port_range_min: 22
+          port_range_max: 22
+        - protocol: tcp
+          port_range_min: 5000
+          port_range_max: 5000
